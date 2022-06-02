@@ -8,11 +8,15 @@ public class BulletController : MonoBehaviour
     public float Speed;
 
     // Private Variables
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private ParticleSystem Impact;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        Impact = GetComponent<ParticleSystem>();
+        Impact.Stop();
 
         //Rotate towards Mouse
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
@@ -35,12 +39,21 @@ public class BulletController : MonoBehaviour
     {
         if (collision.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            Debug.Log($"Impact Play");
+            //Destroy(gameObject);
+            Explode();
         }
         else if (collision.CompareTag("Enemy"))
         {
+            Debug.Log($"Impact Play");
             collision.gameObject.GetComponent<EnemyController>().GetDamage(Damage);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Explode();
         }
+    }
+
+    void Explode()
+    {
+        Impact.Play();
     }
 }

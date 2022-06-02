@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float Gravity = 6; // How Fast The Player Will Pulled Down To The Ground, 6 Feels Smooth
     public int AirJumps = 1; // Max Amount Of Air Jumps, Set It To 0 If You Dont Want To Jump In The Air
     public LayerMask groundLayer; // The Layers That Represent The Ground, Any Layer That You Want The Player To Be Able To Jump In
+    [SerializeField] private AudioSource Jumping;
 
     [Header("Dashing")]
     public float DashPower = 3; // It Is A Speed Multiplyer, A Value Of 2 - 3 Is Recommended.
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+            Jumping.Play();
         }
 
         // Dashing

@@ -16,12 +16,17 @@ public class EnemyController : MonoBehaviour
     Vector2 PreviousPlayerDirection;
     Rigidbody2D rb;
     BoxCollider2D col;
+    private ParticleSystem Ded;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         Player = GameObject.FindWithTag("Player");
         DriftFactor = 1;
+
+        Ded = GetComponent<ParticleSystem>();
+        Ded.Stop();
     }
 
     void Update()
@@ -40,6 +45,7 @@ public class EnemyController : MonoBehaviour
         //Die
         if(Health <= 0)
         {
+            Splurt();
             Destroy(gameObject);
         }
 
@@ -80,5 +86,10 @@ public class EnemyController : MonoBehaviour
             yield return null;
         }
         DriftFactor = 1;
+    }
+
+    void Splurt()
+    {
+        Ded.Play();
     }
 }
