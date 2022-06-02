@@ -39,13 +39,11 @@ public class BulletController : MonoBehaviour
     {
         if (collision.CompareTag("Ground"))
         {
-            Debug.Log($"Impact Play");
             //Destroy(gameObject);
             Explode();
         }
         else if (collision.CompareTag("Enemy"))
         {
-            Debug.Log($"Impact Play");
             collision.gameObject.GetComponent<EnemyController>().GetDamage(Damage);
             //Destroy(gameObject);
             Explode();

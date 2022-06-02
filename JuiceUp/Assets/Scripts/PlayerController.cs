@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
-            Jumping.Play();
         }
 
         // Dashing
@@ -128,6 +127,7 @@ public class PlayerController : MonoBehaviour
         if (InTheGround())
         {
             rb.velocity = Vector2.up * JumpPower;
+            Jumping.Play();
         }
         else
         {
