@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyController : MonoBehaviour
 {
     public float Health;
     public float MaxSpeed;
     public float AccelerationRate;
-
+    
+    private ScoreManager scoremanager;
+    
     // Private Variables
     float Speed;
     float DriftFactor;
@@ -23,6 +26,7 @@ public class EnemyController : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         Player = GameObject.FindWithTag("Player");
         DriftFactor = 1;
+        scoremanager = FindObjectOfType<ScoreManager>();
     }
 
     void Update()
@@ -41,6 +45,7 @@ public class EnemyController : MonoBehaviour
         //Die
         if(Health <= 0)
         {
+            scoremanager.AddScore();
             Destroy(gameObject);
         }
 
