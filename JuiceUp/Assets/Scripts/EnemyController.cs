@@ -48,8 +48,8 @@ public class EnemyController : MonoBehaviour
         //Die
         if(Health <= 0)
         {
-            Instantiate(Splash);
             Splash.transform.position = go.transform.position;
+            Instantiate(Splash);
             scoremanager.AddScore();
             Destroy(gameObject);
         }

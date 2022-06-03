@@ -8,7 +8,7 @@ public class DesroySplash : MonoBehaviour
     
     void Start()
     {
-        timeLeft = 30;
+        timeLeft = 2;
     }
 
     void Update()
