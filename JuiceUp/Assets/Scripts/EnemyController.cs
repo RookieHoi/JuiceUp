@@ -10,7 +10,10 @@ public class EnemyController : MonoBehaviour
     public float AccelerationRate;
     
     private ScoreManager scoremanager;
-    
+    [SerializeField] private GameObject Splash;
+
+    [SerializeField] private GameObject go;
+
     // Private Variables
     float Speed;
     float DriftFactor;
@@ -45,6 +48,8 @@ public class EnemyController : MonoBehaviour
         //Die
         if(Health <= 0)
         {
+            Instantiate(Splash);
+            Splash.transform.position = go.transform.position;
             scoremanager.AddScore();
             Destroy(gameObject);
         }

@@ -39,8 +39,7 @@ public class BulletController : MonoBehaviour
     {
         if (collision.CompareTag("Ground"))
         {
-            Explode();
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (collision.CompareTag("Enemy"))
         {

@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
     private float currentScore;
-    
+
     private void Start()
     {
         currentScore = 0;
